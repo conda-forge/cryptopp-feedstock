@@ -11,8 +11,13 @@ source:
   url: https://github.com/weidai11/cryptopp/archive/{{ name | upper }}_{{ version | replace('.', '_') }}.tar.gz
   sha256: {{ sha256 }}
 
+  patches:
+    # Replaces flag -march=native with flag  -mtune=generic
+    # This flag can be removed via cmake optino in the next release
+    - 0001-cmake-mtune-fix.patch  # [not win]
+
 build:
-  number: 1
+  number: 3
   skip: true  # [win and py27]
   features:
     - vc9     # [win and py27]
