@@ -18,25 +18,16 @@ source:
 
 build:
   number: 3
-  skip: true  # [win and py27]
-  features:
-    - vc9     # [win and py27]
-    - vc10    # [win and py34]
-    - vc14    # [win and py>=35]
+  skip: true  # [win and vc<14]
 
 requirements:
   build:
-    - toolchain
     - cmake
-    - python  # [win]
-    - vc 9    # [win and py27]
-    - vc 10   # [win and py34]
-    - vc 14   # [win and py>=35]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
 
   run:
-    - vc 9    # [win and py27]
-    - vc 10   # [win and py34]
-    - vc 14   # [win and py>=35]
 
 test:
   commands:
