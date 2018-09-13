@@ -17,7 +17,7 @@ source:
     - 0001-cmake-mtune-fix.patch  # [not win]
 
 build:
-  number: 3
+  number: 1003
   skip: true  # [win and vc<14]
 
 requirements:
