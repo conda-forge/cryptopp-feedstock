@@ -5,6 +5,10 @@
 # to remove march=generic flag
 #sed -i s/$/$'\r'/ $RECIPE_DIR/0001-cmake-mtune-fix.patch
 #git apply --binary $RECIPE_DIR/0001-cmake-mtune-fix.patch
+
+# cryptopp 5.6.5 does not build with c++17. Forcing C++14
+export CXXFLAGS="$CXXFLAGS -std=c++14"
+
 mkdir build
 cd build
 cmake -D BUILD_SHARED=OFF -D DISABLE_SSSE3=ON -D BUILD_TESTING=OFF -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_LIBDIR=lib -D CMAKE_INSTALL_PREFIX=$PREFIX ..
