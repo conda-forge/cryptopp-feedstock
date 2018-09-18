@@ -1,6 +1,6 @@
 {% set name = "cryptopp" %}
-{% set version = "5.6.5" %}
-{% set sha256 = "79fd5514b3b191a1c6d934cd989d5e058f4726a72a3dad2444bd1274a6aae686" %}
+{% set version = "7.0.0" %}
+{% set sha256 = "3ee97903882b5f58c88b6f9d2ce50fd1000be95479180c7b4681cd3f4c1c7629" %}
 
 package:
   name: {{ name| lower }}
@@ -11,13 +11,8 @@ source:
   url: https://github.com/weidai11/cryptopp/archive/{{ name | upper }}_{{ version | replace('.', '_') }}.tar.gz
   sha256: {{ sha256 }}
 
-  patches:
-    # Replaces flag -march=native with flag  -mtune=generic
-    # This flag can be removed via cmake optino in the next release
-    - 0001-cmake-mtune-fix.patch  # [not win]
-
 build:
-  number: 1003
+  number: 1000
   skip: true  # [win and vc<14]
 
 requirements:
