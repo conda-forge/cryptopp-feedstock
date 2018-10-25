@@ -17,8 +17,10 @@ source:
     - 0001-cmake-mtune-fix.patch  # [not win]
 
 build:
-  number: 1003
+  number: 1004
   skip: true  # [win and vc<14]
+  run_exports:
+    - {{ pin_subpackage(name, exact=True) }}
 
 requirements:
   build:
