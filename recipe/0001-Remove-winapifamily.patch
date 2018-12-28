@@ -1,0 +1,24 @@
+From f129f06ade0c0ce14bed21feeea400c57cd8cb4e Mon Sep 17 00:00:00 2001
+From: Sylvain Corlay <sylvain.corlay@gmail.com>
+Date: Fri, 4 Jan 2019 13:31:48 +0100
+Subject: [PATCH] Remove winapifamily
+
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e5702bf..882e2e8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -447,7 +447,6 @@ if (MSVC)
+   if (CMAKE_SYSTEM_VERSION MATCHES "10\\.0.*")
+     list(APPEND CRYPTOPP_COMPILE_DEFINITIONS "_WIN32_WINNT=0x0A00")
+   endif ()
+-  list(APPEND CRYPTOPP_COMPILE_OPTIONS "/FI\"winapifamily.h\"")
+ endif ()
+ 
+ # Enable PIC for all target machines except 32-bit i386 due to register pressures.
+-- 
+2.20.1
+

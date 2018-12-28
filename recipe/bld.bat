@@ -1,7 +1,7 @@
 :: Adding the cmake support for cryptopp, which dropped cmake in 6.0.
-git clone https://github.com/noloader/cryptopp-cmake.git
+git clone https://github.com/SylvainCorlay/cryptopp-cmake.git
 cd cryptopp-cmake
-git checkout CRYPTOPP_7_0_0
+git checkout crypto8
 cd ..
 
 COPY cryptopp-cmake\cryptopp-config.cmake

@@ -1,0 +1,34 @@
+From 9c0f4744870473bc65e3a354d7e417cd8544c6fc Mon Sep 17 00:00:00 2001
+From: Sylvain Corlay <sylvain.corlay@gmail.com>
+Date: Fri, 4 Jan 2019 14:14:04 +0100
+Subject: [PATCH] MSVC template instantiation
+
+---
+ config.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/config.h b/config.h
+index 8db32c65..8794b50d 100644
+--- a/config.h
++++ b/config.h
+@@ -1006,7 +1006,7 @@ NAMESPACE_END
+ 
+ #if defined(__MWERKS__)
+ #define CRYPTOPP_EXTERN_DLL_TEMPLATE_CLASS extern class CRYPTOPP_DLL
+-#elif defined(__BORLANDC__) || defined(__SUNPRO_CC)
++#elif defined(__BORLANDC__) || defined(__SUNPRO_CC) || defined(MSVC)
+ #define CRYPTOPP_EXTERN_DLL_TEMPLATE_CLASS template class CRYPTOPP_DLL
+ #else
+ #define CRYPTOPP_EXTERN_DLL_TEMPLATE_CLASS extern template class CRYPTOPP_DLL
+@@ -1020,7 +1020,7 @@ NAMESPACE_END
+ 
+ #if defined(__MWERKS__)
+ #define CRYPTOPP_EXTERN_STATIC_TEMPLATE_CLASS extern class
+-#elif defined(__BORLANDC__) || defined(__SUNPRO_CC)
++#elif defined(__BORLANDC__) || defined(__SUNPRO_CC) || defined(MSVC)
+ #define CRYPTOPP_EXTERN_STATIC_TEMPLATE_CLASS template class
+ #else
+ #define CRYPTOPP_EXTERN_STATIC_TEMPLATE_CLASS extern template class
+-- 
+2.17.1
+

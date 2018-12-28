@@ -1,6 +1,6 @@
 {% set name = "cryptopp" %}
-{% set version = "7.0.0" %}
-{% set sha256 = "3ee97903882b5f58c88b6f9d2ce50fd1000be95479180c7b4681cd3f4c1c7629" %}
+{% set version = "8.0.0" %}
+{% set sha256 = "65e8b7ab068a91427f9ebbdd14ffee2ccfed34defd1902325c87a3eb16efbe6d" %}
 
 package:
   name: {{ name| lower }}
@@ -10,21 +10,20 @@ source:
   fn: {{ name | upper }}-{{ version | replace('.', '_') }}.tar.gz
   url: https://github.com/weidai11/cryptopp/archive/{{ name | upper }}_{{ version | replace('.', '_') }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - 0001-MSVC-template-instantiation.patch
+    - 0001-Remove-winapifamily.patch
 
 build:
-  number: 1003
+  number: 0
   skip: true  # [win and vc<14]
   run_exports:
-    - {{ pin_compatible(name, exact=True) }}
+    - {{ pin_compatible(name, max_pin='x.x.x') }}
 
 requirements:
   build:
     - cmake
-    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-  host:
-
-  run:
 
 test:
   commands:
