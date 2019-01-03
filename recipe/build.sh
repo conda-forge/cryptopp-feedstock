@@ -12,6 +12,6 @@ cp "$PWD/cryptopp-cmake/CMakeLists.txt" "$PWD"
 # Regular cmake build
 mkdir build
 cd build
-cmake -D BUILD_SHARED=OFF -D DISABLE_SSSE3=ON -D BUILD_TESTING=OFF -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_LIBDIR=lib -D CMAKE_INSTALL_PREFIX=$PREFIX ..
+cmake -D DISABLE_SSSE3=ON -D BUILD_TESTING=OFF -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_LIBDIR=lib -D CMAKE_INSTALL_PREFIX=$PREFIX ..
 make
 make install
