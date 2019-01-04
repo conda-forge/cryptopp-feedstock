@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1001
+  number: 1002
   skip: true  # [win and vc<14]
   run_exports:
     - {{ pin_compatible(name, exact=True) }}
@@ -28,11 +28,14 @@ requirements:
 
 test:
   commands:
-    - test -f ${PREFIX}/lib/libcryptopp.a    # [unix]
-    - test -d ${PREFIX}/include/cryptopp     # [unix]
+    - test -f ${PREFIX}/lib/libcryptopp.a      # [unix]
+    - test -f ${PREFIX}/lib/libcryptopp.so     # [linux]
+    - test -f ${PREFIX}/lib/libcryptopp.dylib  # [osx]
+    - test -d ${PREFIX}/include/cryptopp       # [unix]
     - test -f ${PREFIX}/lib/cmake/cryptopp/cryptopp-config.cmake          # [unix]
     - test -f ${PREFIX}/lib/cmake/cryptopp/cryptopp-config-version.cmake  # [unix]
-    - if exist %LIBRARY_LIB%\cryptopp-static.lib (exit 0) else (exit 1)       # [win]
+    - if exist %LIBRARY_LIB%\cryptopp-static.lib (exit 0) else (exit 1)   # [win]
+    - if exist %LIBRARY_BIN%\cryptopp-shared.dll (exit 0) else (exit 1)   # [win]
     - if exist %LIBRARY_LIB%\cmake\cryptopp\cryptopp-config.cmake (exit 0) else (exit 1)          # [win]
     - if exist %LIBRARY_LIB%\cmake\cryptopp\cryptopp-config-version.cmake (exit 0) else (exit 1)  # [win]
 
