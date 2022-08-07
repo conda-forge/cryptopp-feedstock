@@ -1,6 +1,6 @@
 {% set name = "cryptopp" %}
-{% set version = "7.0.0" %}
-{% set sha256 = "3ee97903882b5f58c88b6f9d2ce50fd1000be95479180c7b4681cd3f4c1c7629" %}
+{% set version = "8.7.0" %}
+{% set sha256 = "8d6a4064b8e9f34cd3e838f5a12c40067ee7b95ee37d9173ec273cb0913e7ca2" %}
 
 package:
   name: {{ name| lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1004
+  number: 0
   skip: true  # [win and vc<14]
   run_exports:
     - {{ pin_compatible(name, exact=True) }}
