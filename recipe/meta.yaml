@@ -12,10 +12,10 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1004
+  number: 1005
   skip: true  # [win and vc<14]
   run_exports:
-    - {{ pin_compatible(name, exact=True) }}
+    - {{ pin_subpackage(name, exact=True) }}
 
 requirements:
   build:
@@ -23,9 +23,6 @@ requirements:
     - make  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-  host:
-
-  run:
 
 test:
   commands:
@@ -41,7 +38,7 @@ test:
 
 about:
   home: https://www.cryptopp.com
-  license: Boost-1.0
+  license: BSL-1.0
   license_file: License.txt
   summary: A C++ Class Library of Cryptographic Schemes
 
