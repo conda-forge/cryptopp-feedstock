@@ -17,7 +17,7 @@ fi
 # Regular cmake build
 mkdir build
 cd build
-cmake \
+cmake ${CMAKE_ARGS} \
   -D DISABLE_SSSE3=ON \
   -D BUILD_TESTING=OFF \
   -D CMAKE_BUILD_TYPE=Release \
