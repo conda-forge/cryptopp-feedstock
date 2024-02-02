@@ -32,9 +32,9 @@ test:
     - test -d ${PREFIX}/include/cryptopp       # [unix]
     - test -f ${PREFIX}/share/cmake/cryptopp/cryptoppConfig.cmake         # [unix]
     - test -f ${PREFIX}/share/cmake/cryptopp/cryptoppConfigVersion.cmake  # [unix]
-    - if exist %LIBRARY_LIB%\lib\cryptopp.lib (exit 0) else (exit 1)   # [win]
-    - if exist %LIBRARY_LIB%\share\cmake\cryptopp\cryptoppConfig.cmake (exit 0) else (exit 1)         # [win]
-    - if exist %LIBRARY_LIB%\share\cmake\cryptopp\cryptoppConfigVersion.cmake (exit 0) else (exit 1)  # [win]
+    - if exist %LIBRARY_LIB%\cryptopp.lib (exit 0) else (exit 1)   # [win]
+    - if exist %LIBRARY_PREFIX%\share\cmake\cryptopp\cryptoppConfig.cmake (exit 0) else (exit 1)         # [win]
+    - if exist %LIBRARY_PREFIX%\share\cmake\cryptopp\cryptoppConfigVersion.cmake (exit 0) else (exit 1)  # [win]
 
 about:
   home: https://www.cryptopp.com
