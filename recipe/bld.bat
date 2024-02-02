@@ -1,9 +1,10 @@
 :: Regular cmake build
 cmake ^
     -G "NMake Makefiles" ^
-    -D BUILD_TESTING=OFF ^
     -D CMAKE_BUILD_TYPE=Release ^
     -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
+    -D CRYPTOPP_BUILD_TESTING=OFF ^
+    -D CRYPTOPP_SOURCES=%CD% ^
     -S cryptopp-cmake ^
     -B build
 if errorlevel 1 exit 1
