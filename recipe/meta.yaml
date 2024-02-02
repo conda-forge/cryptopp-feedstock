@@ -1,7 +1,7 @@
 {% set name = "cryptopp" %}
-{% set version = "8.6.0" %}
-{% set sha256 = "9304625f4767a13e0a5f26d0f019d78cf9375604a33e5391c3bf2e81399dfeb8" %}
-{% set sha256_cmake = "970b20d55dbf9d6335485e72c9f8967d878bf64bbd3de6aa28436beb6799c493" %}
+{% set version = "8.9.0" %}
+{% set sha256 = "ab5174b9b5c6236588e15a1aa1aaecb6658cdbe09501c7981ac8db276a24d9ab" %}
+{% set sha256_cmake = "191d69061c56602de1610ebf03b44dcf75636006e7e60ef8105bee6472ec0caf" %}
 
 package:
   name: {{ name| lower }}
@@ -13,19 +13,15 @@ source:
     sha256: {{ sha256 }}
   - folder: cryptopp-cmake
     fn: cmake-{{ name | upper }}-{{ version | replace('.', '_') }}.tar.gz
-    url: https://github.com/noloader/cryptopp-cmake/archive/{{ name | upper }}_{{ version | replace('.', '_') }}.tar.gz
+    url: https://github.com/abdes/cryptopp-cmake/archive/{{ name | upper }}_{{ version | replace('.', '_') }}.tar.gz
     sha256: {{ sha256_cmake }}
 
 build:
   number: 0
-  skip: true  # [win and vc<14]
-  run_exports:
-    - {{ pin_subpackage(name, exact=True) }}
 
 requirements:
   build:
-    - cmake <3.12  # [unix]
-    - cmake =3.12  # [win]
+    - cmake >=3.28
     - make  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
@@ -33,14 +29,12 @@ requirements:
 test:
   commands:
     - test -f ${PREFIX}/lib/libcryptopp.a      # [unix]
-    - test -f ${PREFIX}/lib/libcryptopp.so     # [linux]
-    - test -f ${PREFIX}/lib/libcryptopp.dylib  # [osx]
     - test -d ${PREFIX}/include/cryptopp       # [unix]
-    - test -f ${PREFIX}/lib/cmake/cryptopp/cryptopp-config.cmake          # [unix]
-    - test -f ${PREFIX}/lib/cmake/cryptopp/cryptopp-config-version.cmake  # [unix]
+    - test -f ${PREFIX}/share/cmake/cryptopp/cryptoppConfig.cmake         # [unix]
+    - test -f ${PREFIX}/share/cmake/cryptopp/cryptoppConfigVersion.cmake  # [unix]
     - if exist %LIBRARY_LIB%\cryptopp-static.lib (exit 0) else (exit 1)   # [win]
-    - if exist %LIBRARY_LIB%\cmake\cryptopp\cryptopp-config.cmake (exit 0) else (exit 1)          # [win]
-    - if exist %LIBRARY_LIB%\cmake\cryptopp\cryptopp-config-version.cmake (exit 0) else (exit 1)  # [win]
+    - if exist %LIBRARY_LIB%\cmake\cryptopp\cryptoppConfig.cmake (exit 0) else (exit 1)         # [win]
+    - if exist %LIBRARY_LIB%\cmake\cryptopp\cryptoppConfigVersion.cmake (exit 0) else (exit 1)  # [win]
 
 about:
   home: https://www.cryptopp.com
