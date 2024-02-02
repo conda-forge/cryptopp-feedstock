@@ -1,25 +1,31 @@
 {% set name = "cryptopp" %}
-{% set version = "7.0.0" %}
-{% set sha256 = "3ee97903882b5f58c88b6f9d2ce50fd1000be95479180c7b4681cd3f4c1c7629" %}
+{% set version = "8.6.0" %}
+{% set sha256 = "9304625f4767a13e0a5f26d0f019d78cf9375604a33e5391c3bf2e81399dfeb8" %}
+{% set sha256_cmake = "970b20d55dbf9d6335485e72c9f8967d878bf64bbd3de6aa28436beb6799c493" %}
 
 package:
   name: {{ name| lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name | upper }}-{{ version | replace('.', '_') }}.tar.gz
-  url: https://github.com/weidai11/cryptopp/archive/{{ name | upper }}_{{ version | replace('.', '_') }}.tar.gz
-  sha256: {{ sha256 }}
+  - fn: {{ name | upper }}-{{ version | replace('.', '_') }}.tar.gz
+    url: https://github.com/weidai11/cryptopp/archive/{{ name | upper }}_{{ version | replace('.', '_') }}.tar.gz
+    sha256: {{ sha256 }}
+  - folder: cryptopp-cmake
+    fn: cmake-{{ name | upper }}-{{ version | replace('.', '_') }}.tar.gz
+    url: https://github.com/noloader/cryptopp-cmake/archive/{{ name | upper }}_{{ version | replace('.', '_') }}.tar.gz
+    sha256: {{ sha256_cmake }}
 
 build:
-  number: 1005
+  number: 0
   skip: true  # [win and vc<14]
   run_exports:
     - {{ pin_subpackage(name, exact=True) }}
 
 requirements:
   build:
-    - cmake
+    - cmake <3.12  # [unix]
+    - cmake =3.12  # [win]
     - make  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
