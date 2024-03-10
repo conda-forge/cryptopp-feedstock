@@ -15,9 +15,11 @@ source:
     fn: cmake-{{ name | upper }}-{{ version | replace('.', '_') }}.tar.gz
     url: https://github.com/abdes/cryptopp-cmake/archive/{{ name | upper }}_{{ version | replace('.', '_') }}.tar.gz
     sha256: {{ sha256_cmake }}
+    patches:
+      - 113.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:

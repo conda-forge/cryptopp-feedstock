@@ -1,0 +1,23 @@
+From fb46689a1161e936fa88ecd7a06d5136327666a8 Mon Sep 17 00:00:00 2001
+From: Chris Burr <christopher.burr@cern.ch>
+Date: Sun, 10 Mar 2024 12:05:57 +0100
+Subject: [PATCH] Add missing ppc sources
+
+---
+ cryptopp/sources.cmake | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/cryptopp/sources.cmake b/cryptopp/sources.cmake
+index 34de12f..7c1b8a0 100644
+--- a/cryptopp/sources.cmake
++++ b/cryptopp/sources.cmake
+@@ -115,6 +115,9 @@ set(cryptopp_SOURCES
+     pkcspad.cpp
+     poly1305.cpp
+     polynomi.cpp
++    power7_ppc.cpp
++    power8_ppc.cpp
++    power9_ppc.cpp
+     ppc_simd.cpp
+     primetab.cpp
+     pssr.cpp
